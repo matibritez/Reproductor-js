@@ -5,8 +5,8 @@ const songList= [
         cover: '1.jpeg'
     },
     {
-        title: 'A New Beginning',
-        file: 'anewbeginning.mp3',
+        title: 'Going Home With Ya',
+        file: 'GoingHomeWithYa.mp3',
         cover: '2.jpeg'
     },
     {
@@ -15,3 +15,30 @@ const songList= [
         cover: '3.jpeg'
     }
 ]
+
+const songs = document.getElementById("songs")
+
+function loadSongs(){
+  songList.forEach((song, index) => {
+      //crear li
+      const li = document.createElement("li")
+      //crear a
+      const link = document.createElement("a")
+      //Hidratar a
+      link.textContent = song.title
+      link.href="#"
+      //Escuchar clicks
+      link.addEventListener("click",()=>loadSong(index))
+      //Aniadir a li
+      li.appendChild(link)
+      //Aniadir li a ul
+      songs.appendChild(li)
+  })  
+}
+
+function loadSong(songIndex){
+  audio.songList
+}
+
+
+loadSongs()
