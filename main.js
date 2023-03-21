@@ -1,23 +1,30 @@
 const songList= [
     {
-        title: 'Acoustic Breeze',
-        file: 'acousticbreeze.mp3',
-        cover: '1.jpeg'
+        title: 'Lenguaje Corporal',
+        file: 'DougVLenguajeCorporal.mp3',
+        cover: 'DougV.jpg'
     },
     {
         title: 'Going Home With Ya',
         file: 'GoingHomeWithYa.mp3',
-        cover: '2.jpeg'
+        cover: 'Captain.jpg'
     },
     {
-        title: 'Creative Minds',
-        file: 'creativeminds.mp3',
-        cover: '3.jpeg'
+        title: 'Scootie Wop Mmm Good',
+        file: 'ScootieWopMmmGood.mp3',
+        cover: 'ScootieWop.jpg'
     }
 ]
 
-const songs = document.getElementById("songs")
+//Capturar elementos para trabajar con js
 
+const songs = document.getElementById("songs");
+const audio = document.getElementById("audio");
+const cover = document.getElementById("cover");
+const title = document.getElementById("title");
+
+
+//Cargar canciones y mostrar la lista de canciones
 function loadSongs(){
   songList.forEach((song, index) => {
       //crear li
@@ -28,16 +35,34 @@ function loadSongs(){
       link.textContent = song.title
       link.href="#"
       //Escuchar clicks
-      link.addEventListener("click",()=>loadSong(index))
-      //Aniadir a li
+      link.addEventListener("click",()=> loadSong(index))
+      //Añadir a li
       li.appendChild(link)
-      //Aniadir li a ul
+      //Añadir li a ul
       songs.appendChild(li)
   })  
 }
 
+
+//Cargar Canción seleccionada
+
 function loadSong(songIndex){
-  audio.songList
+    audio.src = "./audio/" + songList[songIndex].file
+    audio.play()
+    changeCover(songIndex)
+    changeSongTitle(songIndex)
+}
+
+//Cambiar el cover de la cancion
+
+function changeCover(songIndex){
+  cover.src = "./img/" + songList[songIndex].cover
+}
+
+
+//Cambiar el titulo de la cancion
+function changeSongTitle(songIndex){
+    title.innerText = songList[songIndex].title
 }
 
 
